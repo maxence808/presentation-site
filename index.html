@@ -53,17 +53,19 @@
           <div class="col-md-3 field">
             <label for="type">Type de bien</label>
             <select id="type" name="type">
-              <option>Bureaux</option>
-              <option>Coworking</option>
-              <option>Entrepôts / Locaux d’activités</option>
-              <option>Commerces</option>
+              <option value="" selected>Tous les biens</option>
+              <option value="bureaux">Bureaux</option>
+              <option value="coworking">Coworking</option>
+              <option value="activites">Entrepôts / Locaux d’activités</option>
+              <option value="commerce">Commerces</option>
             </select>
           </div>
           <div class="col-md-3 field">
             <label for="transaction">Transaction</label>
             <select id="transaction" name="transaction">
-              <option>Location</option>
-              <option>Vente</option>
+              <option value="" selected>Toutes les transactions</option>
+              <option value="location">Location</option>
+              <option value="vente">Vente</option>
             </select>
           </div>
           <div class="col-md-4 field">
@@ -488,6 +490,6 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="assets/js/app.js?v=3e781000ac"></script>
+<script src="assets/js/app.js?v=empty-search-20260821"></script>
 </body>
 </html>

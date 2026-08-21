@@ -213,6 +213,22 @@
     });
   }
 
+  /* Recherche depuis l'accueil : aucun choix signifie réellement aucun filtre,
+     donc aucune chaîne de paramètres vide n'est ajoutée à l'URL. */
+  function initHomeSearch() {
+    var form = document.querySelector('form.search-engine');
+    if (!form) return;
+    form.addEventListener('submit', function (e) {
+      var rempli = Array.prototype.some.call(form.elements, function (field) {
+        return field.name && String(field.value || '').trim() !== '';
+      });
+      if (!rempli) {
+        e.preventDefault();
+        window.location.href = form.getAttribute('action') || 'recherche.html';
+      }
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initHeaderOffset();
     initSectionMenu();
@@ -222,5 +238,6 @@
     initCookieBar();
     initMobileBar();
     initContactForm();
+    initHomeSearch();
   });
 })();
