@@ -1,0 +1,11 @@
+# Configuration locale des assistants
+.claude/
+
+# Fichiers système et éditeurs
+.DS_Store
+Thumbs.db
+*.swp
+
+# Journaux et fichiers temporaires
+*.log
+*.tmp
