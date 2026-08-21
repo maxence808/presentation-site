@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local d’activités à louer à Saint-Ouen-l’Aumône | Réf. 148144 | CBRE</title>
+<meta name="description" content="5 176 m² de locaux d’activités neufs divisibles dès 1 211 m² à Saint-Ouen-l’Aumône (95310). Hauteur libre 8 m, charge au sol 3 T/m². Réf. CBRE 148144.">
+<link rel="canonical" href="https://immobilier.cbre.fr/offre/a-louer/activites/95310/st-ouen-laumone/148144.aspx">
+<meta property="og:title" content="Local d’activités à louer à Saint-Ouen-l’Aumône — 5 176 m² divisibles">
+<meta property="og:description" content="Deux cellules neuves, hauteur libre 8 m, portes à quai et de plain-pied. Réf. CBRE 148144.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/logo.svg?v=da31b7548a">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/css/refonte.css?v=gallery-20260821">
+
+<!-- Données structurées : une offre immobilière, pas une page générique -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Local d’activités à louer à Saint-Ouen-l’Aumône — 5 176 m² divisibles",
+  "sku": "148144",
+  "description": "Deux cellules neuves totalisant 5 176 m², divisibles à partir de 1 211 m², à proximité de l’A15 et de la N184.",
+  "brand": { "@type": "Organization", "name": "CBRE" },
+  "offers": {
+    "@type": "Offer",
+    "price": "100",
+    "priceCurrency": "EUR",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "100",
+      "priceCurrency": "EUR",
+      "unitText": "€/m²/an HT HC"
+    },
+    "availability": "https://schema.org/InStock",
+    "areaServed": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Saint-Ouen-l’Aumône",
+        "postalCode": "95310",
+        "addressCountry": "FR"
+      }
+    }
+  }
+}
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#contenu">Aller au contenu</a>
+
+<!-- =========================================================================
+     En-tête réduit : plus de répétition des catégories déjà accessibles
+     ========================================================================= -->
+<header class="topbar">
+  <div class="searchbar">
+    <a href="../index.html"><img src="../assets/img/logo.svg?v=da31b7548a" alt="CBRE — accueil" style="height:24px"></a>
+    <div class="searchbar__spacer"></div>
+  </div>
+</header>
+
+<!-- Retour exact à la recherche : filtres, tri, cadrage, zoom, défilement -->
+<div class="backbar">
+  <div class="backbar__inner">
+    <a class="btn btn--ghost btn--sm" id="backToSearch" href="recherche.html">← Revenir à ma recherche</a>
+    <span class="contact__hint">Vos filtres, votre tri et votre position dans la liste sont conservés.</span>
+  </div>
+</div>
+
+<main class="fiche" id="contenu">
+
+  <!-- =======================================================================
+       En-tête de fiche : tout ce qui décide d'une visite, sans défiler
+       ======================================================================= -->
+  <div class="fiche__head">
+    <div class="fiche__titlerow">
+      <div style="flex:1 1 340px;min-width:0">
+        <h1 class="fiche__title" id="titre"></h1>
+        <div class="fiche__loc" id="loc"></div>
+      </div>
+      <div class="refbadge">
+        <small>Réf. CBRE</small>
+        <span id="refValue"></span>
+        <button type="button" id="copyRef">Copier</button>
+      </div>
+    </div>
+
+    <div class="kpis" id="kpis"></div>
+
+    <div class="fiche__actions">
+      <a class="btn btn--primary" href="#contact">Demander des informations</a>
+      <a class="btn btn--ghost" id="visiteBtn" href="#">📅 Planifier une visite</a>
+      <button class="btn btn--ghost" type="button" id="openIso">🕐 Temps de trajet</button>
+      <label class="check" style="margin-left:auto">
+        <input type="checkbox" id="watermark"> Filigrane sur les photos
+      </label>
+    </div>
+  </div>
+
+  <div class="fiche__grid">
+
+    <!-- =====================================================================
+         Colonne principale
+         ===================================================================== -->
+    <div>
+
+      <!-- Galerie, avec la localisation comme vignette -->
+      <div class="gallery" id="gallery">
+        <div class="gallery__main" data-watermark="off">
+          <button class="gallery__photo gallery__mainph" type="button" id="openLightbox" aria-label="Afficher la photo en plein écran">
+            <span id="galleryMainLabel"></span>
+            <small id="galleryCounter"></small>
+          </button>
+          <div id="ficheMap"></div>
+          <button class="gallery__badge" type="button" id="backToPhotos">← Revenir aux photos</button>
+          <button class="gallery-nav gallery-nav--prev" type="button" id="galleryPrev" aria-label="Photo précédente">‹</button>
+          <button class="gallery-nav gallery-nav--next" type="button" id="galleryNext" aria-label="Photo suivante">›</button>
+        </div>
+        <div class="gallery-strip">
+          <button class="gallery-strip__nav gallery-strip__nav--prev" type="button" id="thumbPrev" aria-label="Faire défiler les miniatures vers la gauche">‹</button>
+          <div class="gallery-strip__track" id="galleryThumbs"></div>
+          <button class="gallery__thumb gallery__thumb--map" type="button" id="openMapTile">🗺 Carte</button>
+          <button class="gallery-strip__nav gallery-strip__nav--next" type="button" id="thumbNext" aria-label="Faire défiler les miniatures vers la droite">›</button>
+        </div>
+      </div>
+
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Galerie photos" hidden>
+        <button class="lightbox__close" type="button" id="lightboxClose" aria-label="Fermer le plein écran">×</button>
+        <button class="lightbox__nav lightbox__nav--prev" type="button" id="lightboxPrev" aria-label="Photo précédente">‹</button>
+        <div class="lightbox__stage" id="lightboxStage"></div>
+        <button class="lightbox__nav lightbox__nav--next" type="button" id="lightboxNext" aria-label="Photo suivante">›</button>
+        <div class="lightbox__counter" id="lightboxCounter"></div>
+        <div class="lightbox__strip-wrap">
+          <button type="button" id="lightboxThumbPrev" aria-label="Miniatures précédentes">‹</button>
+          <div class="lightbox__strip" id="lightboxThumbs"></div>
+          <button type="button" id="lightboxThumbNext" aria-label="Miniatures suivantes">›</button>
+        </div>
+      </div>
+
+      <!-- Introduction courte ; la description commerciale passe derrière -->
+      <p class="lede" id="lede"></p>
+
+      <div class="disclosure" id="descriptionBloc">
+        <button class="disclosure__btn" type="button" id="toggleDesc" aria-expanded="false"
+                aria-controls="descriptionLongue">
+          <span>Lire la description complète</span>
+        </button>
+        <div class="disclosure__body" id="descriptionLongue" hidden></div>
+      </div>
+
+      <!-- ===================================================================
+           Caractéristiques techniques, groupées par catégorie
+           =================================================================== -->
+      <section class="section" id="technique">
+        <h2 class="section__title">Caractéristiques techniques</h2>
+        <div class="tech-grid" id="techGrid"></div>
+        <p class="contact__hint" style="margin-top:.75rem">
+          Annonce mise à jour le <span id="maj"></span>.
+        </p>
+      </section>
+
+      <!-- ===================================================================
+           Surfaces : synthèse, puis détail à la demande
+           =================================================================== -->
+      <section class="section" id="surfaces">
+        <h2 class="section__title">Surfaces et lots</h2>
+
+        <div class="surf-summary" id="surfSummary"></div>
+
+        <button class="btn btn--ghost" type="button" id="toggleSurf"
+                aria-expanded="false" aria-controls="surfDetail">
+          <span>Afficher le détail des surfaces</span>
+        </button>
+
+        <div class="surf-detail" id="surfDetail" hidden></div>
+
+        <div class="teaser-bar" id="teaserBar">
+          <span class="teaser-bar__txt" id="teaserTxt"></span>
+          <button class="btn btn--primary btn--sm" type="button" id="teaserLots" disabled>
+            Générer un teaser sur les lots choisis
+          </button>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           Temps de trajet, dans la fiche
+           =================================================================== -->
+      <section class="section" id="isoPanel" hidden>
+        <h2 class="section__title">Temps de trajet</h2>
+        <div class="iso">
+          <form class="iso__form" id="isoForm">
+            <div class="field">
+              <label for="isoDepart">Adresse de départ</label>
+              <input type="text" id="isoDepart" placeholder="Adresse, ville" autocomplete="street-address">
+            </div>
+            <div class="field">
+              <label for="isoMode">Mode de transport</label>
+              <select id="isoMode">
+                <option value="voiture">Voiture</option>
+                <option value="transport">Transports en commun</option>
+                <option value="velo">Vélo</option>
+                <option value="marche">Marche</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="isoDuree">Durée maximale</label>
+              <select id="isoDuree">
+                <option value="15">15 min</option>
+                <option value="30" selected>30 min</option>
+                <option value="45">45 min</option>
+                <option value="60">60 min</option>
+              </select>
+            </div>
+            <div class="field" style="justify-content:flex-end">
+              <button class="btn btn--primary" type="submit">Calculer</button>
+            </div>
+            <div class="field" style="justify-content:flex-end">
+              <button class="btn btn--ghost" type="button" id="isoAddOrigin">+ Ajouter ce lieu</button>
+            </div>
+          </form>
+
+          <div class="iso__origins chip-row" id="isoOrigins" aria-label="Lieux de départ enregistrés"></div>
+
+          <div class="iso__map"><div id="isoMap"></div></div>
+          <p class="iso__note" id="isoResult">
+            Renseignez un point de départ, un mode et une durée pour visualiser la zone atteignable.
+          </p>
+          <p class="iso__note">
+            Estimation indicative calculée à partir d’une vitesse moyenne. Elle ne remplace pas
+            un calcul d’itinéraire et ne constitue pas une mesure exacte.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================================================================
+           Localisation
+           =================================================================== -->
+      <section class="section" id="localisation">
+        <h2 class="section__title">Localisation et offres à proximité</h2>
+        <p class="contact__hint">
+          Le bien consulté apparaît en rouge. Les autres offres CBRE du secteur sont
+          signalées par des repères plus petits : cliquez pour en afficher un aperçu.
+        </p>
+        <div class="secteur" id="secteurWrap">
+          <div id="secteurMap"></div>
+          <button class="btn btn--ghost btn--block" type="button" id="openMapSection">
+            Afficher la carte du secteur
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =====================================================================
+         Colonne contact
+         ===================================================================== -->
+    <aside class="fiche__aside" id="contact">
+      <div class="contact">
+        <div class="contact__who">
+          <div class="contact__avatar" id="contactAvatar"></div>
+          <div>
+            <div class="contact__name" id="contactName"></div>
+            <div class="contact__role" id="contactRole"></div>
+          </div>
+        </div>
+
+        <!-- Numéro visible d'emblée -->
+        <a class="contact__tel" id="contactTel" href="#">☎ <span></span></a>
+
+        <div class="contact__actions">
+          <a class="btn btn--primary btn--block" id="mailtoBtn" href="#">Envoyer un e-mail</a>
+          <a class="btn btn--ghost btn--block" id="waBtn" href="#" target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+        </div>
+
+        <form class="contact__form" id="contactForm" novalidate>
+          <p class="contact__hint">
+            Un seul moyen de contact suffit : e-mail <em>ou</em> téléphone.
+          </p>
+
+          <div class="field">
+            <label for="cEmail">Adresse e-mail</label>
+            <input type="email" id="cEmail" name="email" autocomplete="email"
+                   inputmode="email" placeholder="prenom@societe.fr">
+          </div>
+
+          <div class="field">
+            <label for="cTel">Téléphone</label>
+            <input type="tel" id="cTel" name="tel" autocomplete="tel"
+                   inputmode="tel" placeholder="06 12 34 56 78">
+          </div>
+
+          <div class="field">
+            <label for="cNom">Nom <span class="contact__hint">(facultatif)</span></label>
+            <input type="text" id="cNom" name="name" autocomplete="name">
+          </div>
+
+          <p class="contact__error" id="contactError" role="alert"></p>
+
+          <button class="btn btn--primary btn--block" type="submit">Demander des informations</button>
+          <p class="contact__hint">La référence 148144 est jointe automatiquement à votre demande.</p>
+        </form>
+
+        <div class="contact__ok" id="contactOk" tabindex="-1" hidden></div>
+      </div>
+
+      <!-- Actions documentaires : restent visibles sous la carte du broker -->
+      <div class="contact export-card" aria-label="Documents de l’annonce">
+        <div class="export-card__title">Documents de l’annonce</div>
+        <div class="export-card__actions">
+          <a class="btn btn--ghost btn--sm" id="printBtn" href="javascript:void(0)">
+            <span aria-hidden="true">🖨</span> Imprimer la fiche
+          </a>
+          <a class="btn btn--ghost btn--sm" id="teaserBtn" href="javascript:void(0)">
+            <span aria-hidden="true">↓</span> Teaser
+          </a>
+          <a class="btn btn--ghost btn--sm" id="dossierBtn" href="javascript:void(0)">
+            <span aria-hidden="true">↓</span> Dossier détaillé
+          </a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/js/data.js?v=46fe47295a"></script>
+<script src="assets/js/common.js?v=61ff1c08b4"></script>
+<script src="assets/js/annonce.js?v=gallery-20260821"></script>
+</body>
+</html>

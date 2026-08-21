@@ -1,0 +1,35 @@
+# CBRE — Immobilier d'entreprise en France
+
+> Plateforme d'annonces de bureaux, entrepôts, locaux d'activités et commerces
+> à louer ou à vendre en France. Chaque offre porte une référence CBRE stable
+> et des caractéristiques techniques structurées.
+
+Ce fichier est une indication de contexte à destination de certains outils
+d'intelligence artificielle. Il **ne régit pas l'exploration** : le contrôle
+d'accès des robots repose sur `/robots.txt` et sur les règles propres à chaque
+agent. Sa prise en charge n'est ni universelle ni garantie.
+
+## Recherche
+
+- [Entrepôts et locaux d'activités](https://immobilier.cbre.fr/location-entrepots.aspx) : recherche filtrable par surface, hauteur libre, portes à quai, charge au sol et régime ICPE
+- [Bureaux](https://immobilier.cbre.fr/bureaux.aspx) : recherche filtrable par surface, localisation et état du bâtiment
+- [Commerces](https://immobilier.cbre.fr/commerces.aspx)
+
+## Structure d'une annonce
+
+Chaque fiche expose : référence CBRE, type de bien, transaction, commune et
+code postal, surface totale, surface minimale divisible, loyer en €/m²/an HT HC,
+disponibilité, et — pour les biens logistiques — hauteur libre sous poutre,
+charge au sol admissible, nombre de portes à quai et de plain-pied, régime et
+rubriques ICPE. Les données absentes sont explicitement signalées comme non
+communiquées et ne doivent pas être interprétées comme des valeurs nulles.
+
+## Contact
+
+- [Nous contacter](https://immobilier.cbre.fr/contact.aspx)
+- Référence à citer dans tout échange : le numéro d'offre CBRE à 6 chiffres.
+
+## Réserves
+
+Les loyers et fourchettes de marché publiés sont indicatifs, hors RIE et hors
+parking. Ils ne constituent ni une offre contractuelle ni un avis d'expert.

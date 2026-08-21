@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Immobilier d’Entreprise : Bureaux &amp; Entrepôts à Louer ou Vendre – CBRE | CBRE Immobilier d’entreprise</title>
+<meta name="description" content="Location et vente de bureaux, entrepôts et locaux professionnels partout en France. CBRE, n°1 du conseil en immobilier d’entreprise.">
+<link rel="icon" href="assets/img/logo.svg?v=da31b7548a">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="assets/css/cbre.css?v=731c64d3b2" rel="stylesheet">
+</head>
+<body>
+
+<!-- ===================================================================
+     HEADER : .navbar-top (CTA) + .navbar (logo | filtres | utilitaires)
+     =================================================================== -->
+<header class="fixed-top">
+  <div class="navbar-top">
+    <div class="container">
+      <div class="cta">
+        <a href="space-program.html">▦ Calculez votre surface idéale</a>
+        <a href="contact.html">✉ Contactez-nous</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/img/logo.svg?v=da31b7548a" alt="Logo CBRE" class="logo">
+      </a>
+      <div class="navbar-utils">
+        <a class="tel" href="tel:0159300867">&#9742; 01 59 30 08 67</a>
+        <a class="fav" href="favoris.html" aria-label="Vos favoris">&#9825;<span data-fav-count></span></a>
+        <a class="account" href="compte.html">&#128100; Mon compte</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================================================================
+       HERO + moteur de recherche
+       =================================================================== -->
+  <section class="hero">
+    <div class="container">
+      <span class="baseline">n°1 du conseil en immobilier d’entreprise</span>
+      <h1>Immobilier d’entreprise : location et vente de bureaux, entrepôts et locaux professionnels</h1>
+
+      <form class="search-engine" action="recherche.html" method="get">
+        <div class="row align-items-stretch">
+          <div class="col-md-3 field">
+            <label for="type">Type de bien</label>
+            <select id="type" name="type">
+              <option>Bureaux</option>
+              <option>Coworking</option>
+              <option>Entrepôts / Locaux d’activités</option>
+              <option>Commerces</option>
+            </select>
+          </div>
+          <div class="col-md-3 field">
+            <label for="transaction">Transaction</label>
+            <select id="transaction" name="transaction">
+              <option>Location</option>
+              <option>Vente</option>
+            </select>
+          </div>
+          <div class="col-md-4 field">
+            <label for="lieu">Localisation</label>
+            <input id="lieu" name="lieu" type="text" placeholder="Ville, code postal, département">
+          </div>
+          <div class="col-md-2 submit">
+            <button class="btn btn-accent" type="submit">Rechercher</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CHIFFRES CLÉS
+       =================================================================== -->
+  <section class="key-figures">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4">
+          <div class="figure-value">+50</div>
+          <div class="figure-label">ans d’expérience en immobilier d’entreprise</div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="figure-value">46</div>
+          <div class="figure-label">implantations en France</div>
+        </div>
+        <div class="col-md-4 mt-4 mt-md-0">
+          <div class="figure-value">+500</div>
+          <div class="figure-label">consultants à votre service</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       DERNIÈRES ANNONCES  (rail de .card.property-item)
+       =================================================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-between mb-3">
+        <h2>Dernières annonces</h2>
+        <a href="recherche.html" class="btn btn-outline-primary d-none d-md-inline-block">Voir toutes les annonces</a>
+      </div>
+
+      <div class="card-rail">
+
+        <a class="card property-item" href="annonce.html">
+          <div class="card-img">
+            <span class="badge-nouveaute">Nouveauté</span>
+            <button class="btn-fav" type="button" data-fav-id="168083" aria-label="Ajouter aux favoris">♡</button>
+            <div class="placeholder-img">Photo du bien</div>
+          </div>
+          <div class="card-body">
+            <div class="price">160 € /m²/an</div>
+            <div class="surface">2 486 m² — Divisibilité min. 1 898 m²</div>
+            <h3 class="title">Location local d’activités BOBIGNY</h3>
+            <div class="dispo">Disponibilité : Livraison prévisionnelle janvier 2026 (PC obtenu)</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-outline-primary" type="button" data-phone="01 59 30 08 67">Afficher le numéro</button>
+            <span class="btn btn-primary">Envoyer un message</span>
+          </div>
+        </a>
+
+        <a class="card property-item" href="annonce.html">
+          <div class="card-img">
+            <span class="badge-nouveaute">Nouveauté</span>
+            <button class="btn-fav" type="button" data-fav-id="159221" aria-label="Ajouter aux favoris">♡</button>
+            <div class="placeholder-img">Photo du bien</div>
+          </div>
+          <div class="card-body">
+            <div class="price">Nous contacter</div>
+            <div class="surface">96 807 m² — Divisibilité min. 228 m²</div>
+            <h3 class="title">Location bureau NANTERRE</h3>
+            <div class="dispo">Disponibilité : Selon les lots</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-outline-primary" type="button" data-phone="01 59 30 08 67">Afficher le numéro</button>
+            <span class="btn btn-primary">Envoyer un message</span>
+          </div>
+        </a>
+
+        <a class="card property-item" href="annonce.html">
+          <div class="card-img">
+            <button class="btn-fav" type="button" data-fav-id="164410" aria-label="Ajouter aux favoris">♡</button>
+            <div class="placeholder-img">Photo du bien</div>
+          </div>
+          <div class="card-body">
+            <div class="price">197 € /m²/an</div>
+            <div class="surface">432 m² — Non divisible</div>
+            <h3 class="title">Location bureau NANTES</h3>
+            <div class="dispo">Disponibilité : Immédiate</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-outline-primary" type="button" data-phone="01 59 30 08 67">Afficher le numéro</button>
+            <span class="btn btn-primary">Envoyer un message</span>
+          </div>
+        </a>
+
+        <a class="card property-item" href="annonce.html">
+          <div class="card-img">
+            <button class="btn-fav" type="button" data-fav-id="171002" aria-label="Ajouter aux favoris">♡</button>
+            <div class="placeholder-img">Photo du bien</div>
+          </div>
+          <div class="card-body">
+            <div class="price">À partir de 295 € /m²/an</div>
+            <div class="surface">735 m² — Divisibilité min. 265 m²</div>
+            <h3 class="title">Location bureau PARIS 10<sup>ème</sup> (75010)</h3>
+            <div class="dispo">Disponibilité : Immédiate</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-outline-primary" type="button" data-phone="01 59 30 08 67">Afficher le numéro</button>
+            <span class="btn btn-primary">Envoyer un message</span>
+          </div>
+        </a>
+
+        <a class="card property-item" href="annonce.html">
+          <div class="card-img">
+            <button class="btn-fav" type="button" data-fav-id="166845" aria-label="Ajouter aux favoris">♡</button>
+            <div class="placeholder-img">Photo du bien</div>
+          </div>
+          <div class="card-body">
+            <div class="price">159 € /m²/an</div>
+            <div class="surface">170 m² — Non divisible</div>
+            <h3 class="title">Location bureau LILLE</h3>
+            <div class="dispo">Disponibilité : Immédiate</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-outline-primary" type="button" data-phone="01 59 30 08 67">Afficher le numéro</button>
+            <span class="btn btn-primary">Envoyer un message</span>
+          </div>
+        </a>
+
+        <a class="card property-item" href="annonce.html">
+          <div class="card-img">
+            <span class="badge-nouveaute">Nouveauté</span>
+            <button class="btn-fav" type="button" data-fav-id="169930" aria-label="Ajouter aux favoris">♡</button>
+            <div class="placeholder-img">Photo du bien</div>
+          </div>
+          <div class="card-body">
+            <div class="price">230 € /m²/an</div>
+            <div class="surface">5 378 m² — Divisibilité min. 218 m²</div>
+            <h3 class="title">Location bureau VALBONNE</h3>
+            <div class="dispo">Disponibilité : Immédiate</div>
+          </div>
+          <div class="card-actions">
+            <button class="btn btn-outline-primary" type="button" data-phone="01 59 30 08 67">Afficher le numéro</button>
+            <span class="btn btn-primary">Envoyer un message</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       PARCOURS EN 3 ÉTAPES
+       =================================================================== -->
+  <section class="section bg-light-grey">
+    <div class="container">
+      <h2 class="text-center mb-4">CBRE vous accompagne dans votre recherche de locaux professionnels</h2>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="step">
+            <div class="num">1</div>
+            <h3>Définissez votre projet</h3>
+            <p class="text-muted-cbre">Surface, budget, localisation, calendrier : un consultant qualifie votre besoin
+              et cadre votre cahier des charges immobilier.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="step">
+            <div class="num">2</div>
+            <h3>Visitez des locaux</h3>
+            <p class="text-muted-cbre">Nous sélectionnons les biens correspondants dans notre portefeuille
+              et organisons les visites sur site.</p>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="step">
+            <div class="num">3</div>
+            <h3>Nous nous occupons de tout</h3>
+            <p class="text-muted-cbre">Négociation du bail, conditions financières, accompagnement juridique
+              jusqu’à la signature et l’emménagement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       SÉLECTION DE LOCAUX (onglets + maillage de liens)
+       =================================================================== -->
+  <section class="section">
+    <div class="container">
+      <h2 class="mb-3">Sélection de locaux professionnels</h2>
+
+      <div class="tab-selector">
+        <button type="button" data-tab="bureaux" class="active">Bureaux</button>
+        <button type="button" data-tab="entrepots">Entrepôts / Locaux d’activités</button>
+        <button type="button" data-tab="commerces">Locaux commerciaux</button>
+      </div>
+
+      <div data-tab-panel="bureaux">
+        <h3 class="mb-3">Bureaux à louer</h3>
+        <div class="row link-grid">
+          <div class="col-md-4">
+            <a href="recherche.html">&lt; 200 m² à Paris</a>
+            <a href="recherche.html">À Paris avec parking</a>
+            <a href="recherche.html">À Paris avec terrasse / espace extérieur</a>
+          </div>
+          <div class="col-md-4">
+            <a href="recherche.html">Bureaux à louer 77</a>
+            <a href="recherche.html">Bureaux à louer 78</a>
+            <a href="recherche.html">Bureaux à louer 91</a>
+            <a href="recherche.html">Bureaux à louer 92</a>
+          </div>
+          <div class="col-md-4">
+            <a href="recherche.html">Bureaux à louer 93</a>
+            <a href="recherche.html">Bureaux à louer 94</a>
+            <a href="recherche.html">Bureaux à louer 95</a>
+            <a href="recherche.html">À Lyon et en Rhône-Alpes</a>
+            <a href="recherche.html">À Lille et dans le Nord</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-tab-panel="entrepots" hidden>
+        <h3 class="mb-3">Entrepôts et locaux d’activités à louer</h3>
+        <div class="row link-grid">
+          <div class="col-md-4">
+            <a href="recherche.html">Entrepôts en Île-de-France</a>
+            <a href="recherche.html">Logistique urbaine Paris</a>
+            <a href="recherche.html">Messageries</a>
+          </div>
+          <div class="col-md-4">
+            <a href="recherche.html">Entrepôts à louer 93</a>
+            <a href="recherche.html">Entrepôts à louer 94</a>
+            <a href="recherche.html">Entrepôts à louer 95</a>
+          </div>
+          <div class="col-md-4">
+            <a href="recherche.html">Locaux d’activités Lyon</a>
+            <a href="recherche.html">Locaux d’activités Marseille</a>
+            <a href="recherche.html">Logistique frigorifique</a>
+          </div>
+        </div>
+      </div>
+
+      <div data-tab-panel="commerces" hidden>
+        <h3 class="mb-3">Locaux commerciaux à louer</h3>
+        <div class="row link-grid">
+          <div class="col-md-4">
+            <a href="recherche.html">Pieds d’immeuble Paris</a>
+            <a href="recherche.html">Centres commerciaux</a>
+          </div>
+          <div class="col-md-4">
+            <a href="recherche.html">Retail park</a>
+            <a href="recherche.html">Commerces Lyon</a>
+          </div>
+          <div class="col-md-4">
+            <a href="recherche.html">Commerces Bordeaux</a>
+            <a href="recherche.html">Commerces Lille</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       CTA PROPRIÉTAIRE
+       =================================================================== -->
+  <section class="section">
+    <div class="container">
+      <div class="owner-cta">
+        <h2>Vous avez un bien<br>à louer ou à vendre ?</h2>
+        <a href="contact.html" class="btn btn-accent">Confier mon bien</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       BLOG / TENDANCES
+       =================================================================== -->
+  <section class="section bg-light-grey">
+    <div class="container">
+      <h2 class="mb-4">Informez-vous sur les tendances de l’immobilier d’entreprise</h2>
+
+      <div class="row g-3">
+        <div class="col-md-4">
+          <a class="post-card" href="blog.html">
+            <div class="thumb"><div class="placeholder-img">Visuel article</div></div>
+            <div class="post-body">
+              <div class="date">30/07/2026</div>
+              <h3>Logistique frigorifique : un marché de niche aux fondamentaux solides</h3>
+              <p class="small text-muted-cbre">Un segment sous tension où l’offre disponible reste très inférieure
+                à la demande des opérateurs de la chaîne du froid…</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a class="post-card" href="blog.html">
+            <div class="thumb"><div class="placeholder-img">Visuel article</div></div>
+            <div class="post-body">
+              <div class="date">23/07/2026</div>
+              <h3>Paris sous 40 °C : la fraîcheur devient le nouveau critère d’or de l’immobilier</h3>
+              <p class="small text-muted-cbre">Habituée à décrypter les mutations du parc tertiaire parisien,
+                notre analyse remonte aujourd’hui à la surface pour observer un phénomène…</p>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-4">
+          <a class="post-card" href="blog.html">
+            <div class="thumb"><div class="placeholder-img">Visuel article</div></div>
+            <div class="post-body">
+              <div class="date">23/07/2026</div>
+              <h3>Le centre de Paris fait sa mue : quand la culture redessine l’attractivité</h3>
+              <p class="small text-muted-cbre">Depuis le mois de juin, Paris vit au rythme d’une déferlante
+                culturelle singulière : un pont transformé en caverne monumentale…</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex gap-2 flex-wrap">
+        <a href="blog.html" class="btn btn-outline-primary">Blog Bureaux</a>
+        <a href="blog.html" class="btn btn-outline-primary">Blog Industriel</a>
+        <a href="blog.html" class="btn btn-outline-primary">Blog Commerces</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================================================
+       BLOC SEO
+       =================================================================== -->
+  <section class="seo-block">
+    <div class="container">
+      <h2>Immobilier d’entreprise : un accompagnement expert pour votre projet immobilier</h2>
+      <p>Leader mondial du conseil en immobilier d’entreprise, CBRE accompagne les entreprises et les
+        investisseurs dans la recherche et la valorisation de leurs bureaux, entrepôts, locaux d’activités
+        et espaces de coworking. Présents partout en France, nous vous aidons à trouver des solutions
+        immobilières adaptées à vos enjeux de développement, de performance et de transformation.</p>
+      <p>Chaque entreprise est unique. C’est pourquoi nous accordons une attention particulière à la
+        compréhension de vos besoins, de vos contraintes et de vos objectifs business afin de vous proposer
+        une solution immobilière sur mesure, parfaitement alignée avec votre stratégie.</p>
+
+      <h3>Un conseil expert pour l’implantation de votre entreprise</h3>
+      <p>Spécialiste en immobilier d’entreprise, CBRE s’appuie sur une solide connaissance du marché et une
+        approche globale pour conseiller le meilleur choix de bureaux, d’entrepôts / locaux d’activités ou
+        d’espaces commerciaux, en location comme à l’acquisition.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================================================================
+     FOOTER
+     =================================================================== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <h4>Nos locations à proximité</h4>
+        <a href="recherche.html">Bureaux à louer Paris</a>
+        <a href="recherche.html">Bureaux à louer Lyon</a>
+        <a href="recherche.html">Bureaux à louer Lille</a>
+        <a href="recherche.html">Bureaux à louer Marseille</a>
+        <a href="recherche.html">Bureaux à louer Bordeaux</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>Top départements</h4>
+        <a href="recherche.html">Paris (75)</a>
+        <a href="recherche.html">Hauts-de-Seine (92)</a>
+        <a href="recherche.html">Seine-Saint-Denis (93)</a>
+        <a href="recherche.html">Val-de-Marne (94)</a>
+        <a href="recherche.html">Rhône (69)</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>Recherches associées</h4>
+        <a href="recherche.html">Coworking</a>
+        <a href="recherche.html">Entrepôts</a>
+        <a href="recherche.html">Locaux d’activités</a>
+        <a href="recherche.html">Locaux commerciaux</a>
+        <a href="space-program.html">Calculez votre surface</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <h4>CBRE</h4>
+        <a href="contact.html">Nous contacter</a>
+        <a href="blog.html">Blog</a>
+        <a href="contact.html">Confier un bien</a>
+        <a href="compte.html">Mon compte</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>
+        <a href="#">Mentions légales</a>
+        <a href="#">CGU</a>
+        <a href="#">Politique de confidentialité</a>
+        <a href="#">Gestion des cookies</a>
+      </div>
+      <div class="social">
+        <a href="#" aria-label="LinkedIn">in</a>
+        <a href="#" aria-label="X">X</a>
+        <a href="#" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bandeau cookies -->
+<div class="cookie-bar" hidden>
+  <h5>Nous respectons votre vie privée</h5>
+  <p>Nous utilisons des cookies pour mesurer l’audience du site et personnaliser votre expérience.
+     Vous pouvez accepter, refuser ou paramétrer votre choix à tout moment.</p>
+  <div class="actions">
+    <button class="btn btn-cc-primary" data-consent="all">Tout accepter</button>
+    <button class="btn btn-cc-primary" data-consent="necessary">Tout refuser</button>
+    <button class="btn btn-cc-secondary" data-consent="custom">Paramétrer</button>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/app.js?v=3e781000ac"></script>
+</body>
+</html>

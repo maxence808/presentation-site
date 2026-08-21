@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrepôts et locaux d’activités à louer | CBRE</title>
+<meta name="description" content="Recherchez un entrepôt ou un local d’activités : surface, hauteur libre, quais, charge au sol, ICPE. Liste et carte synchronisées.">
+<link rel="canonical" href="https://immobilier.cbre.fr/location-entrepots.aspx">
+<meta property="og:title" content="Entrepôts et locaux d’activités à louer — CBRE">
+<meta property="og:description" content="Comparez les offres sur leurs caractéristiques logistiques réelles.">
+<meta property="og:type" content="website">
+<link rel="icon" href="../assets/img/logo.svg?v=da31b7548a">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="assets/css/refonte.css?v=searchbar-size-20260821">
+</head>
+<body class="search-page">
+
+<a class="skip-link" href="#liste">Aller aux résultats</a>
+
+<!-- =========================================================================
+     En-tête : la partie haute se replie au défilement, la barre compacte reste
+     ========================================================================= -->
+<header class="topbar">
+  <div class="topbar__full">
+    <div class="institutional-nav">
+      <a class="institutional-nav__brand" href="../index.html" aria-label="CBRE — accueil">
+        <img src="../assets/img/logo.svg?v=da31b7548a" alt="CBRE">
+      </a>
+      <nav class="institutional-nav__links" aria-label="Navigation principale">
+        <a href="../index.html#services">Services</a>
+        <a href="../blog.html">Études et analyses</a>
+        <a href="recherche.html">Biens immobiliers</a>
+        <a href="../contact.html">Équipe et bureaux</a>
+        <a href="../contact.html">Carrières</a>
+        <a href="../index.html#cbre">À propos</a>
+      </nav>
+      <div class="institutional-nav__tools">
+        <button type="button" aria-label="Langue : français" title="Français">🇫🇷</button>
+        <button type="button" data-filter-focus="#f-lieu" aria-label="Rechercher">⌕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation principale : logo, raccourcis de filtres et informations utiles -->
+  <div class="searchbar">
+    <div class="quick-filters" aria-label="Filtres de recherche rapides">
+      <button class="quick-filter" type="button" data-filter-focus="[data-f='type']">Entrepôts / Activités <span>⌄</span></button>
+      <button class="quick-filter" type="button" data-filter-focus="#f-transaction">Location <span>⌄</span></button>
+      <button class="quick-filter quick-filter--location" type="button" data-filter-focus="#f-lieu">⌖ Ville, code postal, département</button>
+      <button class="quick-filter" type="button" data-filter-focus="[data-f='surfMin']">Surface <span>⌄</span></button>
+      <button class="quick-filter" type="button" data-filter-focus="[data-f='prixMin']">Prix <span>⌄</span></button>
+      <button class="quick-filter quick-filter--all" type="button" id="openFilters" aria-expanded="false" aria-controls="filters">
+        Tous les filtres <span aria-hidden="true">▽</span>
+      </button>
+    </div>
+
+    <div class="header-utils">
+      <a href="tel:0159300867" class="header-utils__phone">01 59 30 08 67</a>
+      <button type="button" class="header-utils__icon" data-filter-focus="#f-lieu" aria-label="Choisir une localisation">⌖</button>
+      <a href="../compte.html" class="header-utils__account"><span aria-hidden="true">◎</span> Mon compte</a>
+    </div>
+  </div>
+
+  <!-- Ligne secondaire : filtres actifs, compteur et tri -->
+  <div class="searchbar-sub">
+    <div class="chip-row" id="chips" aria-live="polite" aria-label="Filtres actifs"></div>
+
+    <div class="searchbar__spacer"></div>
+
+    <div class="searchbar__count" id="count" aria-live="polite"></div>
+
+    <label class="visually-hidden" for="tri">Trier les résultats</label>
+    <select class="select" id="tri">
+      <option value="pertinence">Nouveautés</option>
+      <option value="maj">Date de mise à jour</option>
+      <option value="surface-asc">Surface croissante</option>
+      <option value="surface-desc">Surface décroissante</option>
+      <option value="prix-asc">Loyer croissant</option>
+      <option value="prix-desc">Loyer décroissant</option>
+      <option value="distance">Distance à la zone recherchée</option>
+      <option value="dispo">Disponibilité</option>
+      <option value="hauteur">Hauteur libre</option>
+      <option value="quais">Nombre de quais</option>
+    </select>
+  </div>
+</header>
+
+<!-- =========================================================================
+     Vue partagée : liste + carte
+     ========================================================================= -->
+<main class="split">
+  <div class="split__list">
+    <div id="liste"></div>
+    <div class="loader loader__dots" id="sentinel" role="status" aria-live="polite" hidden></div>
+
+    <!-- Contenu éditorial : après les résultats, visuellement secondaire -->
+    <section class="seo">
+      <div class="seo__inner">
+        <h2>Louer un entrepôt ou un local d’activités</h2>
+        <p>Le marché de la logistique urbaine se caractérise par une offre disponible très
+          inférieure à la demande sur les surfaces intermédiaires. Les critères déterminants
+          restent la hauteur libre sous poutre, le nombre de portes à quai et la charge au sol
+          admissible, qui conditionnent le type d’exploitation possible.</p>
+        <h3>Comprendre les régimes ICPE</h3>
+        <p>Un bâtiment de stockage relève de la déclaration, de l’enregistrement ou de
+          l’autorisation selon les volumes et la nature des matières entreposées. Vérifiez la
+          compatibilité du régime avec votre activité avant toute prise à bail.</p>
+      </div>
+    </section>
+  </div>
+
+  <div class="split__map">
+    <div id="map" role="application" aria-label="Carte des offres"></div>
+    <div class="map-status" id="mapStatus"></div>
+  </div>
+</main>
+
+<!-- Bascule Liste / Carte, mobile uniquement -->
+<div class="viewtoggle" role="group" aria-label="Affichage">
+  <button type="button" data-view="liste" aria-pressed="true">Liste</button>
+  <button type="button" data-view="carte" aria-pressed="false">Carte</button>
+</div>
+
+<!-- =========================================================================
+     Panneau de filtres — large, multi-colonnes, groupé par catégorie
+     ========================================================================= -->
+<div class="panel-backdrop" id="backdrop"></div>
+
+<aside class="filters" id="filters" role="dialog" aria-modal="true"
+       aria-labelledby="filtersTitle" aria-hidden="true">
+  <div class="filters__head">
+    <h2 id="filtersTitle">Filtres</h2>
+    <button class="btn btn--ghost btn--sm" type="button" id="resetFilters">Tout effacer</button>
+    <button class="btn btn--ghost btn--sm" type="button" id="closeFilters" aria-label="Fermer les filtres">✕</button>
+  </div>
+
+  <div class="filters__body">
+    <div class="fgrid">
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Recherche</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <label for="f-transaction">Transaction</label>
+            <select id="f-transaction" data-f="transaction">
+              <option value="">Toutes</option>
+              <option value="location">Location</option>
+              <option value="vente">Vente</option>
+            </select>
+          </div>
+          <div class="field">
+            <span class="field__label">Type de bien</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="type" data-multi="1" value="activites"> Locaux d’activités</label>
+              <label class="check"><input type="checkbox" data-f="type" data-multi="1" value="entrepot"> Entrepôts</label>
+              <label class="check"><input type="checkbox" data-f="type" data-multi="1" value="bureaux"> Bureaux</label>
+              <label class="check"><input type="checkbox" data-f="type" data-multi="1" value="commerce"> Commerces</label>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-lieu">Localisation</label>
+            <input type="text" id="f-lieu" data-f="lieu" placeholder="Ville, code postal, département"
+                   autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label for="f-rayon">Rayon autour du lieu</label>
+            <select id="f-rayon" data-f="rayon">
+              <option value="">Sans rayon</option>
+              <option value="10">10 km</option>
+              <option value="25">25 km</option>
+              <option value="50">50 km</option>
+              <option value="100">100 km</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Surface et budget</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <span class="field__label">Surface (m²)</span>
+            <div class="range">
+              <input type="number" data-f="surfMin" min="0" step="50" placeholder="Min"
+                     aria-label="Surface minimale en m²">
+              <span>à</span>
+              <input type="number" data-f="surfMax" min="0" step="50" placeholder="Max"
+                     aria-label="Surface maximale en m²">
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Loyer (€/m²/an HT HC)</span>
+            <div class="range">
+              <input type="number" data-f="prixMin" min="0" step="5" placeholder="Min"
+                     aria-label="Loyer minimal">
+              <span>à</span>
+              <input type="number" data-f="prixMax" min="0" step="5" placeholder="Max"
+                     aria-label="Loyer maximal">
+            </div>
+          </div>
+          <label class="check"><input type="checkbox" data-f="divisible" value="1"> Divisible uniquement</label>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Disponibilité et état</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <span class="field__label">Disponibilité</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="dispo" data-multi="1" value="immediate"> Immédiate</label>
+              <label class="check"><input type="checkbox" data-f="dispo" data-multi="1" value="date"> À date</label>
+              <label class="check"><input type="checkbox" data-f="dispo" data-multi="1" value="lots"> Selon les lots</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">État du bâtiment</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="etat" data-multi="1" value="neuf"> Neuf</label>
+              <label class="check"><input type="checkbox" data-f="etat" data-multi="1" value="renove"> Rénové / Restructuré</label>
+              <label class="check"><input type="checkbox" data-f="etat" data-multi="1" value="usage"> État d’usage</label>
+              <label class="check"><input type="checkbox" data-f="etat" data-multi="1" value="construire"> À construire</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Technique — logistique</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <label for="f-h">Hauteur libre minimale (m)</label>
+            <input type="number" id="f-h" data-f="hMin" min="0" step="0.5" placeholder="ex. 8">
+          </div>
+          <div class="field">
+            <label for="f-charge">Résistance au sol minimale (T/m²)</label>
+            <input type="number" id="f-charge" data-f="chargeMin" min="0" step="0.5" placeholder="ex. 3">
+          </div>
+          <div class="field">
+            <label for="f-quais">Portes à quai (minimum)</label>
+            <input type="number" id="f-quais" data-f="quaisMin" min="0" step="1" placeholder="ex. 4">
+          </div>
+          <div class="field">
+            <label for="f-pp">Portes de plain-pied (minimum)</label>
+            <input type="number" id="f-pp" data-f="ppMin" min="0" step="1" placeholder="ex. 2">
+          </div>
+          <div class="field">
+            <label for="f-sect">Portes sectionnelles (minimum)</label>
+            <input type="number" id="f-sect" data-f="sectMin" min="0" step="1" placeholder="ex. 2">
+          </div>
+          <div class="field">
+            <label for="f-aire">Aire de manœuvre — profondeur min. (m)</label>
+            <input type="number" id="f-aire" data-f="aireMin" min="0" step="1" placeholder="ex. 32">
+          </div>
+          <div class="field">
+            <label for="f-pont">Pont roulant — capacité min. (t)</label>
+            <input type="number" id="f-pont" data-f="pontMin" min="0" step="0.5" placeholder="ex. 5">
+          </div>
+          <div class="field">
+            <label for="f-palettes">Emplacements palettes (minimum)</label>
+            <input type="number" id="f-palettes" data-f="palettesMin" min="0" step="500" placeholder="ex. 10 000">
+          </div>
+          <div class="field">
+            <label for="f-temp">Température atteinte (≤ °C)</label>
+            <input type="number" id="f-temp" data-f="tempMaxi" step="1" placeholder="ex. -18">
+          </div>
+          <div class="field">
+            <span class="field__label">Classe logistique</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="classe" data-multi="1" value="A"> Classe A</label>
+              <label class="check"><input type="checkbox" data-f="classe" data-multi="1" value="B"> Classe B</label>
+              <label class="check"><input type="checkbox" data-f="classe" data-multi="1" value="C"> Classe C</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Technique — configuration</legend>
+        <div class="fgroup__body">
+          <div class="checks">
+            <label class="check"><input type="checkbox" data-f="accesPL" value="1"> Accès poids lourds</label>
+            <label class="check"><input type="checkbox" data-f="aire" value="1"> Aire de manœuvre</label>
+            <label class="check"><input type="checkbox" data-f="batIndep" value="1"> Bâtiment indépendant</label>
+            <label class="check"><input type="checkbox" data-f="fer" value="1"> Embranchement fer</label>
+            <label class="check"><input type="checkbox" data-f="traversant" value="1"> Entrepôt traversant</label>
+            <label class="check"><input type="checkbox" data-f="racke" value="1"> Entrepôt racké</label>
+            <label class="check"><input type="checkbox" data-f="frigo" value="1"> Frigorifique</label>
+            <label class="check"><input type="checkbox" data-f="messagerie" value="1"> Messagerie</label>
+            <label class="check"><input type="checkbox" data-f="secu" value="1"> Site sécurisé</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Surfaces par poste (m²)</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <label for="f-act">Activités / entrepôt (minimum)</label>
+            <input type="number" id="f-act" data-f="surfActMin" min="0" step="100" placeholder="ex. 4 000">
+          </div>
+          <div class="field">
+            <label for="f-bur">Bureaux (minimum)</label>
+            <input type="number" id="f-bur" data-f="surfBurMin" min="0" step="50" placeholder="ex. 500">
+          </div>
+          <div class="field">
+            <label for="f-atelier">Atelier (minimum)</label>
+            <input type="number" id="f-atelier" data-f="surfAtelierMin" min="0" step="50" placeholder="ex. 600">
+          </div>
+          <div class="field">
+            <label for="f-mezz">Mezzanine (minimum)</label>
+            <input type="number" id="f-mezz" data-f="surfMezzMin" min="0" step="50" placeholder="ex. 300">
+          </div>
+          <div class="field">
+            <label for="f-gh">Grande hauteur (minimum)</label>
+            <input type="number" id="f-gh" data-f="surfGHMin" min="0" step="500" placeholder="ex. 9 000">
+          </div>
+          <div class="field">
+            <label for="f-terrain">Terrain (minimum)</label>
+            <input type="number" id="f-terrain" data-f="surfTerrainMin" min="0" step="1000" placeholder="ex. 20 000">
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Équipements et prestations</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <label for="f-park">Places de parking (minimum)</label>
+            <input type="number" id="f-park" data-f="parkMin" min="0" step="5" placeholder="ex. 50">
+          </div>
+          <div class="field">
+            <label for="f-bornes">Bornes de recharge électrique (minimum)</label>
+            <input type="number" id="f-bornes" data-f="bornesMin" min="0" step="1" placeholder="ex. 10">
+          </div>
+          <div class="field">
+            <label for="f-sanit">Sanitaires (minimum)</label>
+            <input type="number" id="f-sanit" data-f="sanitairesMin" min="0" step="1" placeholder="ex. 4">
+          </div>
+          <div class="field">
+            <span class="field__label">Chauffage</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="chauffage" data-multi="1" value="gaz-aerotherme"> Gaz / Aérotherme</label>
+              <label class="check"><input type="checkbox" data-f="chauffage" data-multi="1" value="electrique"> Électrique</label>
+              <label class="check"><input type="checkbox" data-f="chauffage" data-multi="1" value="pac"> Pompe à chaleur</label>
+              <label class="check"><input type="checkbox" data-f="chauffage" data-multi="1" value="aucun"> Sans chauffage</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Éclairage</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="eclairage" data-multi="1" value="led"> LED</label>
+              <label class="check"><input type="checkbox" data-f="eclairage" data-multi="1" value="fluo"> Fluorescent</label>
+              <label class="check"><input type="checkbox" data-f="eclairage" data-multi="1" value="naturel"> Naturel / zénithal</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Structure / Couverture</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="structure" data-multi="1" value="beton"> Béton</label>
+              <label class="check"><input type="checkbox" data-f="structure" data-multi="1" value="metal"> Métal</label>
+              <label class="check"><input type="checkbox" data-f="structure" data-multi="1" value="mixte"> Mixte</label>
+            </div>
+          </div>
+          <div class="checks">
+            <label class="check"><input type="checkbox" data-f="clim" value="1"> Climatisation</label>
+            <label class="check"><input type="checkbox" data-f="bureaux" value="1"> Bureaux d’accompagnement</label>
+            <label class="check"><input type="checkbox" data-f="cuisine" value="1"> Cuisine</label>
+            <label class="check"><input type="checkbox" data-f="rie" value="1"> RIE / Cafétéria</label>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">Certifications environnementales</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <label for="f-breeam">Niveau BREEAM minimal</label>
+            <select id="f-breeam" data-f="breeamMin">
+              <option value="">Indifférent</option>
+              <option value="good">Good ou mieux</option>
+              <option value="very-good">Very Good ou mieux</option>
+              <option value="excellent">Excellent ou mieux</option>
+              <option value="outstanding">Outstanding</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-pv">Photovoltaïque — surface min. (m²)</label>
+            <input type="number" id="f-pv" data-f="pvMin" min="0" step="100" placeholder="ex. 1 000">
+          </div>
+          <div class="field">
+            <label for="f-dpe">DPE au maximum</label>
+            <select id="f-dpe" data-f="dpeMax">
+              <option value="">Indifférent</option>
+              <option value="A">A</option><option value="B">B jusqu’à A</option>
+              <option value="C">C jusqu’à A</option><option value="D">D jusqu’à A</option>
+              <option value="E">E jusqu’à A</option><option value="F">F jusqu’à A</option>
+            </select>
+          </div>
+          <label class="check"><input type="checkbox" data-f="hqe" value="1"> Certification HQE</label>
+          <div class="field">
+            <span class="field__label">Autres certifications</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="certif" data-multi="1" value="LEED Gold"> LEED Gold</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset class="fgroup">
+        <legend class="fgroup__legend">ICPE et réglementaire</legend>
+        <div class="fgroup__body">
+          <div class="field">
+            <span class="field__label">Régime ICPE</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="icpe" data-multi="1" value="declaration"> Déclaration</label>
+              <label class="check"><input type="checkbox" data-f="icpe" data-multi="1" value="enregistrement"> Enregistrement</label>
+              <label class="check"><input type="checkbox" data-f="icpe" data-multi="1" value="autorisation"> Autorisation</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Classement SEVESO</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="seveso" data-multi="1" value="non-soumis"> Non soumis</label>
+              <label class="check"><input type="checkbox" data-f="seveso" data-multi="1" value="seuil-bas"> Seuil bas</label>
+              <label class="check"><input type="checkbox" data-f="seveso" data-multi="1" value="seuil-haut"> Seuil haut</label>
+            </div>
+          </div>
+          <div class="field">
+            <span class="field__label">Rubriques ICPE</span>
+            <div class="checks">
+              <label class="check"><input type="checkbox" data-f="rubriques" data-multi="1" value="1510"> 1510 — Entrepôts couverts</label>
+              <label class="check"><input type="checkbox" data-f="rubriques" data-multi="1" value="1530"> 1530 — Bois, papier, carton</label>
+              <label class="check"><input type="checkbox" data-f="rubriques" data-multi="1" value="2662"> 2662 — Polymères</label>
+              <label class="check"><input type="checkbox" data-f="rubriques" data-multi="1" value="2663"> 2663 — Pneumatiques</label>
+              <label class="check"><input type="checkbox" data-f="rubriques" data-multi="1" value="4735"> 4735 — Ammoniac</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+    </div>
+  </div>
+
+  <div class="filters__foot">
+    <div class="count" id="panelCount" aria-live="polite"></div>
+    <button class="btn btn--primary" type="button" id="applyFilters">Voir les résultats</button>
+  </div>
+</aside>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="assets/js/data.js?v=46fe47295a"></script>
+<script src="assets/js/common.js?v=storm-header-20260821"></script>
+<script src="assets/js/recherche.js?v=storm-header-20260821"></script>
+</body>
+</html>

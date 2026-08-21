@@ -1,0 +1,28 @@
+# robots.txt — immobilier.cbre.fr
+# Contrôle de l'exploration. À ne pas confondre avec llms.txt, qui n'a aucune
+# valeur de directive : seul ce fichier (et les règles propres à chaque robot)
+# régit ce qui peut être exploré.
+
+User-agent: *
+Allow: /
+
+# Pages sans valeur d'indexation
+Disallow: /cust/
+Disallow: /favoris
+Disallow: /*/teaser.html
+Disallow: /*/dossier.html
+
+# Les URL de recherche filtrée génèrent une combinatoire infinie :
+# on laisse explorer les pages de zone, pas les jeux de paramètres.
+Disallow: /*?*surfMin=
+Disallow: /*?*surfMax=
+Disallow: /*?*prixMin=
+Disallow: /*?*prixMax=
+Disallow: /*?*hMin=
+Disallow: /*?*quaisMin=
+Disallow: /*?*chargeMin=
+Disallow: /*?*carte=
+Disallow: /*?*y=
+Disallow: /*?*actif=
+
+Sitemap: https://immobilier.cbre.fr/sitemap.xml
